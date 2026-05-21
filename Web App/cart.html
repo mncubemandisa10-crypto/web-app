@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page settings and linked assets -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - StreetBites</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <style>
+    /* Cart page layout, table, summary, and checkout button styling */
+    .cart-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .cart-title {
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: var(--primary);
+    }
+    
+    .empty-cart {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .empty-cart p {
+      font-size: 1.2em;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+    
+    .empty-cart a {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .empty-cart a:hover {
+      background: var(--accent-dark);
+    }
+    
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    
+    .cart-table thead {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .cart-table th {
+      padding: 15px;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    .cart-table td {
+      padding: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .cart-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .quantity-control button {
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      border: 1px solid var(--border);
+      background: white;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    
+    .quantity-control input {
+      width: 50px;
+      text-align: center;
+      border: 1px solid var(--border);
+      padding: 5px;
+      border-radius: 3px;
+    }
+    
+    .remove-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+    
+    .remove-btn:hover {
+      background: #c82333;
+    }
+    
+    .cart-summary {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      max-width: 400px;
+      margin-left: auto;
+    }
+    
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .summary-row.total {
+      border-bottom: none;
+      margin-top: 15px;
+      padding: 15px 0;
+      font-size: 1.2em;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    
+    .checkout-btn {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+    
+    .checkout-btn:hover {
+      background: var(--accent-dark);
+    }
+    
+    .continue-shopping {
+      display: inline-block;
+      background: var(--primary-light);
+      color: white;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      transition: background 0.3s;
+    }
+    
+    .continue-shopping:hover {
+      background: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Site header with logo and navigation links -->
+<header>
+  <div class="header-content">
+    <div class="logo"><img src="images/logo2.jpg" alt="StreetBites Logo"><span class="logo-text">StreetBites</span></div>
+    <!-- Button used by app.js to open and close the mobile menu -->
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Menu</a>
+      <a href="history.html">History</a>
+      <a href="auth.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Shopping cart page content -->
+<div class="cart-container">
+  <h1 class="cart-title">Shopping Cart</h1>
+  
+  <a href="dashboard.html" class="continue-shopping">Continue Shopping</a>
+  
+  <!-- Empty cart message shown when there are no saved cart items -->
+  <div class="empty-cart" id="emptyCart">
+    <p>Your cart is currently empty</p>
+    <p>Browse our menu and add items to your cart</p>
+    <a href="dashboard.html">View Menu</a>
+  </div>
+  
+  <!-- Cart table is filled by app.js when items are added -->
+  <table class="cart-table" style="display: none;" id="cartTable">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="cartItems">
+    </tbody>
+  </table>
+  
+  <!-- Order totals shown after cart items are rendered -->
+  <div class="cart-summary" style="display: none;" id="cartSummary">
+    <div class="summary-row">
+      <span>Subtotal:</span>
+      <span id="subtotal">R0.00</span>
+    </div>
+    <div class="summary-row">
+      <span>Delivery Fee:</span>
+      <span>R25.00</span>
+    </div>
+    <div class="summary-row total">
+      <span>Total:</span>
+      <span id="total">R0.00</span>
+    </div>
+    <button class="checkout-btn" type="button" id="checkoutJump">Proceed to Checkout</button>
+  </div>
+
+  <!-- Checkout form used to create a saved order -->
+  <div class="form-section checkout-panel" id="checkoutPanel" style="display: none;">
+    <h2>Delivery Details</h2>
+    <form id="checkoutForm" novalidate>
+      <div class="form-group">
+        <label for="customerName">Full Name</label>
+        <input type="text" id="customerName" name="customerName" placeholder="John Doe">
+      </div>
+
+      <div class="form-group">
+        <label for="customerPhone">Phone Number</label>
+        <input type="tel" id="customerPhone" name="customerPhone" placeholder="+27 72 123 4567">
+      </div>
+
+      <div class="form-group">
+        <label for="customerAddress">Delivery Address</label>
+        <textarea id="customerAddress" name="customerAddress" rows="4" placeholder="Street address, suburb, city"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="paymentMethod">Payment Method</label>
+        <select id="paymentMethod" name="paymentMethod">
+          <option value="">Choose a payment method</option>
+          <option value="cash">Cash on delivery</option>
+          <option value="card">Card on delivery</option>
+          <option value="eft">Instant EFT</option>
+        </select>
+      </div>
+
+      <div class="message" id="checkoutMessage" hidden></div>
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+</div>
+
+<!-- Site footer -->
+<footer>
+  <p>&copy; 2026 StreetBites. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page settings and linked assets -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order History - StreetBites</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+<!-- Site header with logo and navigation links -->
+<header>
+  <div class="header-content">
+    <div class="logo"><img src="images/logo2.jpg" alt="StreetBites Logo"><span class="logo-text">StreetBites</span></div>
+    <!-- Button used by app.js to open and close the mobile menu -->
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Menu</a>
+      <a href="history.html">History</a>
+      <a href="auth.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Order history page content -->
+<main class="history-page">
+  <div class="container">
+    <div class="products-header">
+      <h1>Order History</h1>
+      <p>Track your recent StreetBites orders and delivery progress.</p>
+    </div>
+
+    <!-- Empty state shown when there are no orders or the user is logged out -->
+    <div class="empty-cart" id="historyEmpty">
+      <p>No orders yet.</p>
+      <p>Place an order from the menu and it will appear here.</p>
+      <a href="dashboard.html">Browse Menu</a>
+    </div>
+
+    <!-- app.js fills this area with saved order cards -->
+    <div class="history-list" id="historyList"></div>
+  </div>
+</main>
+
+<!-- Site footer -->
+<footer>
+  <p>&copy; 2026 StreetBites. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page settings and linked assets -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - StreetBites</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+<!-- Site header with logo and navigation links -->
+<header>
+  <div class="header-content">
+    <div class="logo"><img src="images/logo2.jpg" alt="StreetBites Logo"><span class="logo-text">StreetBites</span></div>
+    <!-- Button used by app.js to open and close the mobile menu -->
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Menu</a>
+      <a href="history.html">History</a>
+      <a href="auth.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Login form section -->
+<div class="form-section">
+  <h2>Sign In</h2>
+  
+  <!-- novalidate lets custom JavaScript validation handle form errors -->
+  <form id="loginForm" novalidate>
+    <!-- User email input -->
+    <div class="form-group">
+      <label for="connectEmail">Email Address</label>
+      <input type="email" id="connectEmail" name="email" placeholder="your@email.com">
+    </div>
+    
+    <!-- User password input -->
+    <div class="form-group">
+      <label for="connectPassword">Password</label>
+      <input type="password" id="connectPassword" name="password" placeholder="Enter your password">
+    </div>
+    
+    <!-- Hidden message area for success or error feedback -->
+    <div class="message" id="loginMessage" hidden></div>
+    <button type="submit">Sign In</button>
+  </form>
+  
+  <!-- Link for users who need to create a new account -->
+  <p style="text-align: center; color: var(--text-light); margin-top: 20px;">
+    Don't have an account? <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 600;">Create one</a>
+  </p>
+</div>
+
+<!-- Site footer -->
+<footer>
+  <p>&copy; 2026 StreetBites. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

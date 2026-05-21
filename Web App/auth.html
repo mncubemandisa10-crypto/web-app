@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page settings and linked assets -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - StreetBites</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <style>
+    /* About page hero, information sections, stats, feature cards, and call-to-action styling */
+    .about-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    
+    .about-hero h1 {
+      font-size: 2.5em;
+      margin: 0 0 15px 0;
+    }
+    
+    .about-hero p {
+      font-size: 1.1em;
+      margin: 0;
+      opacity: 0.95;
+    }
+    
+    .about-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    
+    .about-section {
+      margin-bottom: 50px;
+    }
+    
+    .about-section h2 {
+      color: var(--primary);
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .about-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    .about-section p {
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 30px 0;
+    }
+    
+    .feature-card {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: all 0.3s;
+      border-left: 4px solid var(--accent);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,156,136,0.15);
+    }
+    
+    .feature-icon {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .feature-card h3 {
+      color: var(--primary);
+      margin: 0 0 10px 0;
+    }
+    
+    .feature-card p {
+      color: var(--text-light);
+      margin: 0;
+      font-size: 0.95em;
+    }
+    
+    .stats-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      padding: 50px 20px;
+      border-radius: 8px;
+      margin: 40px 0;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+    
+    .stat {
+      padding: 20px;
+    }
+    
+    .stat-number {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+    
+    .stat-label {
+      font-size: 1em;
+      opacity: 0.95;
+    }
+    
+    .values-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    
+    .values-list li {
+      padding: 12px 0;
+      padding-left: 30px;
+      position: relative;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    
+    .values-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    
+    .cta-section {
+      background: var(--accent);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 40px 0;
+    }
+    
+    .cta-section h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+    
+    .cta-section h2::after {
+      background: white;
+    }
+    
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: var(--accent);
+      padding: 12px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-top: 15px;
+    }
+    
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Site header with logo and navigation links -->
+<header>
+  <div class="header-content">
+    <div class="logo"><img src="images/logo2.jpg" alt="StreetBites Logo"><span class="logo-text">StreetBites</span></div>
+    <!-- Button used by app.js to open and close the mobile menu -->
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Menu</a>
+      <a href="history.html">History</a>
+      <a href="auth.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</header>
+
+<!-- About page hero banner -->
+<div class="about-hero">
+  <h1>About StreetBites</h1>
+  <p>Connecting food lovers with authentic local cuisine</p>
+</div>
+
+<!-- Main about page content -->
+<div class="about-content">
+  <!-- Story section -->
+  <div class="about-section">
+    <h2>Our Story</h2>
+    <p>StreetBites was founded with a simple vision: to make quality food from local businesses accessible to everyone while supporting our community. What started as a small initiative has grown into a thriving platform serving thousands of customers across the region.</p>
+    <p>We believe that local food vendors and restaurants deserve recognition and support. By connecting them with food lovers like you, we're building a stronger, more vibrant food community.</p>
+  </div>
+  
+  <!-- Platform statistics section -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-number">5000+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Partner Vendors</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">10,000+</div>
+        <div class="stat-label">Deliveries Completed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Customer Support</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mission and values section -->
+  <div class="about-section">
+    <h2>Our Mission</h2>
+    <p>To revolutionize the way people discover and enjoy local food by providing a seamless, reliable platform that benefits both customers and vendors. We're committed to:</p>
+    <ul class="values-list">
+      <li><strong>Delivering Fresh:</strong> Ensuring every meal arrives hot and fresh</li>
+      <li><strong>Supporting Local:</strong> Empowering small businesses and street food vendors</li>
+      <li><strong>Building Community:</strong> Creating connections between food lovers and creators</li>
+      <li><strong>Excellent Service:</strong> Going above and beyond for our customers</li>
+      <li><strong>Fair Pricing:</strong> Keeping costs competitive for everyone</li>
+    </ul>
+  </div>
+  
+  <!-- Feature cards explaining why customers should choose StreetBites -->
+  <div class="about-section">
+    <h2>Why Choose StreetBites?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Lightning Fast</h3>
+        <p>Average delivery time under 30 minutes</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Quality Assured</h3>
+        <p>All vendors vetted for quality and hygiene</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Best Prices</h3>
+        <p>Competitive pricing without compromising quality</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Local First</h3>
+        <p>Supporting local businesses and vendors</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Easy to Use</h3>
+        <p>Simple interface for quick ordering</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Always Available</h3>
+        <p>24/7 customer support when you need us</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Final call-to-action links -->
+  <div class="cta-section">
+    <h2>Ready to Experience StreetBites?</h2>
+    <p style="margin: 0 0 15px 0;">Start ordering from your favorite local vendors today</p>
+    <a href="dashboard.html" class="cta-btn">Browse Menu</a>
+    <a href="register.html" class="cta-btn" style="margin-left: 10px; background: white; color: var(--accent);">Create Account</a>
+  </div>
+</div>
+
+<!-- Site footer -->
+<footer>
+  <p>&copy; 2026 StreetBites. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

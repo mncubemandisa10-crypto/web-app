@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page settings and linked assets -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - StreetBites</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <style>
+    /* Menu page search bar and empty-results styling */
+    .search-container {
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .search-box {
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 1em;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0,156,136,0.15);
+      outline: none;
+    }
+    
+    .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      margin-top: 30px;
+      display: none;
+    }
+    
+    .no-results p {
+      color: var(--text-light);
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Site header with logo and navigation links -->
+<header>
+  <div class="header-content">
+    <div class="logo"><img src="images/logo2.jpg" alt="StreetBites Logo"><span class="logo-text">StreetBites</span></div>
+    <!-- Button used by app.js to open and close the mobile menu -->
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Menu</a>
+      <a href="history.html">History</a>
+      <a href="auth.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart (<span data-cart-count>0</span>)</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Menu page content -->
+<div class="products-section">
+  <div class="container">
+    <div class="products-header">
+      <h2>Our Menu</h2>
+      <p>Explore our delicious selection of fresh food</p>
+    </div>
+    
+    <!-- Search input filters the menu items in app.js -->
+    <div class="search-container">
+      <div class="search-box">
+        <label for="searchInput" class="visually-hidden">Search menu items</label>
+        <input type="text" id="searchInput" placeholder="Search menu items... (e.g., Kota, Chips, Fatcakes)">
+      </div>
+    </div>
+
+    <div class="message" id="menuMessage" hidden></div>
+    
+    <!-- app.js replaces this sample grid with menu data when the page loads -->
+    <div class="product-grid" id="productGrid">
+      <div class="product-card fade-in">
+        <img src="images/Bongani 's  fatcakes.jpg" alt="Fatcakes" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Bongani's Fatcakes</h3>
+          <p class="product-desc">Golden, soft fatcakes served warm</p>
+          <div class="product-footer">
+            <span class="product-price">R25</span>
+            <button class="product-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in">
+        <img src="images/Bongani's kota.jpg" alt="Kota" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Bongani's Kota</h3>
+          <p class="product-desc">Fresh bread with quality fillings</p>
+          <div class="product-footer">
+            <span class="product-price">R45</span>
+            <button class="product-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in">
+        <img src="images/julius extrem king kota.jpg" alt="King Kota" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">King Kota Supreme</h3>
+          <p class="product-desc">Premium kota with all toppings</p>
+          <div class="product-footer">
+            <span class="product-price">R55</span>
+            <button class="product-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in">
+        <img src="images/karishim a   bunny chaow.jpg" alt="Bunny Chow" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Karisima Bunny Chow</h3>
+          <p class="product-desc">Delicious curry in a hollowed loaf</p>
+          <div class="product-footer">
+            <span class="product-price">R60</span>
+            <button class="product-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in">
+        <img src="images/Thembi 's slap chips  large.jpg" alt="Slap Chips" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Thembi's Slap Chips</h3>
+          <p class="product-desc">Crispy, thick-cut fries served fresh</p>
+          <div class="product-footer">
+            <span class="product-price">R35</span>
+            <button class="product-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in">
+        <img src="images/mamis  side dish.jpg" alt="Side Dish" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Mami's Side Dish</h3>
+          <p class="product-desc">Traditional home-cooked vegetables</p>
+          <div class="product-footer">
+            <span class="product-price">R40</span>
+            <button class="product-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in">
+        <img src="images/mogodu monday   mamis  specail dish.jpg" alt="Mogodu" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Mogodu & Dumplings</h3>
+          <p class="product-desc">Monday special - tripe with soft dumplings</p>
+          <div class="product-footer">
+            <span class="product-price">R50</span>
+            <button class="product-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card fade-in">
+        <img src="images/Bongani 's  ice s.jpg" alt="Ice Cream" class="product-image">
+        <div class="product-info">
+          <h3 class="product-name">Bongani's Ice Cream</h3>
+          <p class="product-desc">Cool, creamy refreshment</p>
+          <div class="product-footer">
+            <span class="product-price">R20</span>
+            <button class="product-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Empty search result message -->
+    <div class="no-results" id="noResults">
+      <p>No menu items found matching your search.</p>
+      <p style="font-size: 0.9em; color: var(--text-light);">Try searching for different items</p>
+    </div>
+  </div>
+</div>
+
+<!-- Site footer -->
+<footer>
+  <p>&copy; 2026 StreetBites. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
